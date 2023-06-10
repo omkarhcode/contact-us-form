@@ -9,17 +9,20 @@ import {
   Input,
   Stack,
   Textarea,
+  useToast,
 } from "@chakra-ui/react";
 import { sendContactForm } from "@/lib/api";
 
 const initValues = { name: "", email: "", phone: "", message: "" };
-const initState = { values: initValues, isLoading: false };
+const initState = { values: initValues, isLoading: false, error: "" };
 
 export default function Home() {
   const [state, setState] = useState(initState);
-  const [touched, setTouched] = useState<Record<string, boolean>>({});
 
-  const { values, isLoading } = state;
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
+  const toast = useToast();
+
+  const { values, isLoading, error } = state;
 
   const onBlur = (
     e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -34,8 +37,29 @@ export default function Home() {
     }));
 
   const onSubmit = async () => {
-    setState((prevState) => ({ ...prevState, isLoading: true }));
-    await sendContactForm(values);
+    setState((prevState) => ({
+      ...prevState,
+      isLoading: true,
+    }));
+    console.log("🚀 ~ file: index.tsx:49 ~ setState ~ isLoading:", isLoading);
+    try {
+      await sendContactForm(values);
+
+      toast({
+        title: "Message Sent",
+        status: "success",
+        duration: 2000,
+        position: "top",
+      });
+      setTouched({});
+      setState(initState);
+    } catch (error: any) {
+      setState((prevState) => ({
+        ...prevState,
+        isLoading: false,
+        error: error.message,
+      }));
+    }
   };
 
   return (
@@ -81,7 +105,7 @@ export default function Home() {
               color: "#000000",
               opacity: 0.3,
             }}
-            focusBorderColor="red"
+            focusBorderColor="secondary"
           />
           <FormErrorMessage>Name is required</FormErrorMessage>
         </FormControl>
@@ -109,6 +133,7 @@ export default function Home() {
               color: "#000000",
               opacity: 0.3,
             }}
+            focusBorderColor="secondary"
           />
           <FormErrorMessage>Email is required</FormErrorMessage>
         </FormControl>
@@ -136,6 +161,7 @@ export default function Home() {
               color: "#000000",
               opacity: 0.3,
             }}
+            focusBorderColor="secondary"
           />
           <FormErrorMessage>Phone number is required</FormErrorMessage>
         </FormControl>
@@ -161,6 +187,7 @@ export default function Home() {
               color: "#000000",
               opacity: 0.3,
             }}
+            focusBorderColor="secondary"
           />
         </FormControl>
         <Button
@@ -187,6 +214,11 @@ export default function Home() {
         >
           Send message
         </Button>
+        {error && (
+          <Text color={"red"} fontSize={"14px"} my={2} textAlign={"center"}>
+            {error}
+          </Text>
+        )}
       </Stack>
     </Box>
   );
