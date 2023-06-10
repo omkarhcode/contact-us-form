@@ -10,6 +10,7 @@ import {
   Stack,
   Textarea,
 } from "@chakra-ui/react";
+import { sendContactForm } from "@/lib/api";
 
 const initValues = { name: "", email: "", phone: "", message: "" };
 const initState = { values: initValues, isLoading: false };
@@ -34,7 +35,7 @@ export default function Home() {
 
   const onSubmit = async () => {
     setState((prevState) => ({ ...prevState, isLoading: true }));
-    // await sendContactForm(values);
+    await sendContactForm(values);
   };
 
   return (
