@@ -27,8 +27,7 @@ export default async function handler(
         // private_key: process.env.GOOGLE_PRIVATE_KEY?.split(String.raw`\n`).join(
         //   "\n"
         // ),
-        // private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
-        private_key: process.env.GOOGLE_PRIVATE_KEY,
+        private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
       },
       scopes: [
         "https://www.googleapis.com/auth/drive",
