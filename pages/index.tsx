@@ -10,6 +10,7 @@ import {
   Stack,
   Textarea,
   useToast,
+  Flex,
 } from "@chakra-ui/react";
 import { sendContactForm, sendFormDataToSheet } from "@/lib/api";
 
@@ -64,24 +65,30 @@ export default function Home() {
   };
 
   return (
-    <Box
+    <Flex
+      direction={"column"}
+      w={"100%"}
+      alignItems={"center"}
       backgroundColor={"blackAlpha.200"}
       color="primary"
-      px={{
-        base: "24px",
-        sm: "30px",
-        md: "38px",
-        xl: "48px",
-      }}
+      // px={{
+      //   base: "24px",
+      //   sm: "30px",
+      //   md: "38px",
+      //   xl: "48px",
+      // }}
       py={{
         base: "48px",
       }}
     >
       <Text fontWeight={600} textAlign={"center"}>
-        Contact US BASIC
+        Contact Us Form
       </Text>
       <br />
-      <Stack spacing={{ base: "32px", md: "32px" }}>
+      <Stack
+        spacing={{ base: "32px", md: "32px" }}
+        width={{ base: "90%", md: "400px" }}
+      >
         <FormControl isRequired isInvalid={touched.name && !values.name}>
           <FormLabel
             fontSize={{ base: "14px" }}
@@ -221,6 +228,6 @@ export default function Home() {
           </Text>
         )}
       </Stack>
-    </Box>
+    </Flex>
   );
 }
