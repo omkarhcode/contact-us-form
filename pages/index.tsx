@@ -12,7 +12,7 @@ import {
   useToast,
   Flex,
 } from "@chakra-ui/react";
-import { sendContactForm, sendFormDataToSheet } from "@/lib/api";
+import { sendFormDataToSheet } from "@/lib/api";
 
 const initValues = { name: "", email: "", phone: "", message: "" };
 const initState = { values: initValues, isLoading: false, error: "" };
