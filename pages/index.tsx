@@ -44,7 +44,7 @@ export default function Home() {
     }));
     console.log("🚀 ~ file: index.tsx:49 ~ setState ~ isLoading:", isLoading);
     try {
-      await sendContactForm(values);
+      // await sendContactForm(values);
       await sendFormDataToSheet(values);
 
       toast({
