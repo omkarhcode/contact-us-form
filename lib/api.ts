@@ -12,7 +12,7 @@ export const sendContactForm = async (data: any) =>
   });
 
 export const sendFormDataToSheet = async (data: any) =>
-  fetch("/api/submitToSheets", {
+  fetch("/api/sheets", {
     method: "POST",
     body: JSON.stringify(data),
     headers: {

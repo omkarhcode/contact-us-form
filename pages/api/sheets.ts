@@ -9,16 +9,14 @@ type SheetForm = {
   message: string;
 };
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(req: any, res: any) {
   if (req.method !== "POST") {
     console.log("Bad request");
     return res.status(400).json({ error: "Bad request" });
   }
 
   const body = req.body as SheetForm;
+  console.log("🚀 ~ file: sheets.ts:22 ~ body:", body);
 
   try {
     // Prepare auth
@@ -39,6 +37,16 @@ export default async function handler(
         "https://www.googleapis.com/auth/spreadsheets",
       ],
     });
+
+    console.log(
+      "🚀 ~ file: sheets.ts:37 ~ process.env.NEXT_PUBLIC_GOOGLE_PRIVATE_KEY:",
+      process.env.NEXT_PUBLIC_GOOGLE_PRIVATE_KEY
+    );
+
+    console.log(
+      "🚀 ~ file: sheets.ts:37 ~ process.env.NEXT_PUBLIC_GOOGLE_PRIVATE_KEY replace:",
+      process.env.NEXT_PUBLIC_GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n")
+    );
 
     const sheets = google.sheets({
       auth,
