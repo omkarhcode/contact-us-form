@@ -20,6 +20,10 @@ export const sendFormDataToSheet = async (data: any) =>
       Accept: "application/json",
     },
   }).then((res) => {
-    if (!res.ok) throw new Error("Failed to Update data in sheet");
+    console.log("🚀 ~ file: api.ts:23 ~ res:", res);
+    if (!res.ok) {
+      console.log("Failed to Update data in sheet");
+      throw new Error("Failed to Update data in sheet");
+    }
     return res.json();
   });

@@ -14,6 +14,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method !== "POST") {
+    console.log("Bad request");
     return res.status(400).json({ error: "Bad request" });
   }
 
