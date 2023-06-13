@@ -12,7 +12,7 @@
 //   });
 
 export const sendFormDataToSheet = async (data: any) =>
-  fetch("/api/sheets", {
+  fetch("/api/submitToSheets", {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
