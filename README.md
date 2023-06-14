@@ -14,7 +14,6 @@ A Next.js application with Chakra UI integration that features a contact form. T
 
 Check out the live demo: [Contact Us Form Demo](https://contact-us-form-wine.vercel.app/)
 
-
 ## Technologies Used
 
 - Next.js
@@ -43,7 +42,7 @@ Check out the live demo: [Contact Us Form Demo](https://contact-us-form-wine.ver
    ```
 
 4. Set up environment variables:
-   
+
    - Create a `.env.local` file in the root directory.
    - Add the following environment variables:
 
@@ -87,10 +86,12 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 - [Nodemailer Documentation](https://nodemailer.com/about/)
 - [Google Sheets API Documentation](https://developers.google.com/sheets/api)
 
+- [How To Submit Form Data To Google Sheets using NextJS](https://youtu.be/7N0OcQZFm3Q)
+- [How to Send Emails with Next JS and Nodemailer](https://youtu.be/t2LvPXHLrek)
+
 ## Links
 
 - [GitHub Repository](https://github.com/omkarhcode/contact-us-form)
-- [Live Demo](https://your-demo-url)
 - [Google Sheet](https://docs.google.com/spreadsheets/d/1KJDR0M8oFuOCg_Z10vA4L-Lg-ZJD8mIOJRbOFB7UyNw/edit?usp=sharing)
 
 ## Contact
