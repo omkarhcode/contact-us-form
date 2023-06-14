@@ -12,7 +12,7 @@ import {
   useToast,
   Flex,
 } from "@chakra-ui/react";
-import { sendFormDataToSheet } from "@/lib/api";
+import { sendContactForm, sendFormDataToSheet } from "@/lib/api";
 
 const initValues = { name: "", email: "", phone: "", message: "" };
 const initState = { values: initValues, isLoading: false, error: "" };
@@ -42,9 +42,9 @@ export default function Home() {
       ...prevState,
       isLoading: true,
     }));
-    console.log("🚀 ~ file: index.tsx:49 ~ setState ~ isLoading:", isLoading);
+
     try {
-      // await sendContactForm(values);
+      await sendContactForm(values);
       await sendFormDataToSheet(values);
 
       toast({

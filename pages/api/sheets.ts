@@ -16,7 +16,6 @@ export default async function handler(req: any, res: any) {
   }
 
   const body = req.body as SheetForm;
-  console.log("🚀 ~ file: sheets.ts:22 ~ body:", body);
 
   try {
     // Prepare auth
@@ -37,16 +36,6 @@ export default async function handler(req: any, res: any) {
         "https://www.googleapis.com/auth/spreadsheets",
       ],
     });
-
-    console.log(
-      "🚀 ~ file: sheets.ts:37 ~ process.env.NEXT_PUBLIC_GOOGLE_PRIVATE_KEY:",
-      process.env.NEXT_PUBLIC_GOOGLE_PRIVATE_KEY
-    );
-
-    console.log(
-      "🚀 ~ file: sheets.ts:37 ~ process.env.NEXT_PUBLIC_GOOGLE_PRIVATE_KEY replace:",
-      process.env.NEXT_PUBLIC_GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n")
-    );
 
     const sheets = google.sheets({
       auth,
