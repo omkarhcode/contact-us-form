@@ -9,10 +9,17 @@ type SheetForm = {
   message: string;
 };
 
-export default async function handler(req: any, res: any) {
+// export default async function handler(
+//   req: NextApiRequest,
+//   res: NextApiResponse
+// ) {
+
+const handler = async (req: any, res: any) => {
   if (req.method !== "POST") {
     console.log("Bad request");
-    return res.status(400).json({ error: "Bad request" });
+    return res.status(400).json({
+      message: "Bad request",
+    });
   }
 
   const body = req.body as SheetForm;
@@ -56,4 +63,5 @@ export default async function handler(req: any, res: any) {
     console.log(error.message);
     return res.status(400).json({ error: error.message });
   }
-}
+};
+export default handler;
